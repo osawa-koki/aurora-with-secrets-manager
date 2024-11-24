@@ -29,7 +29,8 @@
       "extensions": [
         "EditorConfig.EditorConfig",
         "dbaeumer.vscode-eslint",
-        "amazonwebservices.aws-toolkit-vscode"
+        "amazonwebservices.aws-toolkit-vscode",
+        "github.vscode-github-actions"
       ]
     }
   },
