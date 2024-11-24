@@ -24,6 +24,9 @@ export default class DatabaseStack extends cdk.Stack {
       engine: rds.DatabaseClusterEngine.auroraMysql({
         version: rds.AuroraMysqlEngineVersion.VER_3_04_0
       }),
+      credentials: rds.Credentials.fromGeneratedSecret(process.env.AURORA_USERNAME!, {
+        secretName: process.env.AURORA_CREDENTIALS_SECRET_NAME!,
+      }),
       deletionProtection: false,
       instanceProps: {
         vpc,

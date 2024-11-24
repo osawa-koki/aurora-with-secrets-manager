@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv';
 
 import NetworkStack from './network/network';
 import DatabaseStack from './database/database';
+import OutputStack from './output/output';
 import { BASE_STACK_NAME } from './const';
 
 dotenv.config();
@@ -16,9 +17,16 @@ export class AuroraWithSecretsManagerStack extends cdk.Stack {
       stackName: `${BASE_STACK_NAME}-network`,
     });
 
-    new DatabaseStack(this, 'DatabaseStack', {
+    const databaseStack = new DatabaseStack(this, 'DatabaseStack', {
       stackName: `${BASE_STACK_NAME}-database`,
       vpc: networkStack.vpc,
+    });
+
+    const secret = databaseStack.aurora.secret!;
+
+    new OutputStack(this, 'OutputStack', {
+      stackName: `${BASE_STACK_NAME}-output`,
+      secret,
     });
   }
 }
