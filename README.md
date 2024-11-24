@@ -2,6 +2,8 @@
 
 🎺🎺🎺 AuroraデータベースにSecrets Managerを利用してパスワードを管理する！  
 
+![成果物](./fruit.gif)  
+
 ## デプロイ
 
 DevContainerに入り、以下のコマンドを実行します。  
